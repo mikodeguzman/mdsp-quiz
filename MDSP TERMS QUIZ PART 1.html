@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MDSP TERMS QUIZ PART 1</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }
+        .quiz-container { max-width: 800px; margin: auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .question { font-size: 18px; font-weight: bold; }
+        .choices { margin-top: 15px; }
+        .choice { background: #eee; padding: 10px; margin: 5px 0; border-radius: 5px; cursor: pointer; }
+        .choice.correct { background: #c8e6c9; }
+        .choice.incorrect { background: #ffcdd2; }
+        .hidden { display: none; }
+        .center { text-align: center; margin-top: 20px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="quiz-container" id="container">
+        <div class="center">
+            <h1>MDSP TERMS QUIZ PART 1</h1>
+            <p>Welcome, Future Mechanical Engineer! The passing score is 70%.</p>
+            <p>Total Questions: 121 Questions</p>
+            <input type="text" id="nickname" placeholder="Enter your name" />
+            <br><br>
+            <button onclick="document.getElementById('intro-sound').play(); startQuiz();">Start Quiz</button>
+	    <p>Kindly contact the creator of this quiz for any incorrect information or any troubleshoot thank you!
+	    <p>IG: Mark_dgzmn
+	    <p>Tiktok: Markdgzmn
+        </div>
+    </div>
+
+    
+    
+    
+
+
+
+    <script>
+        const quizData = [{'question': 'Heating above the transformation range, usually 1300°F to 1650°F, and cooling slowly to soften the metal and increase in machining', 'choices': ['Annealing', 'Hardening', 'Normalizing', 'Tempering'], 'answer': 'Annealing'}, {'question': 'Heating above the transformation temperature and quenching usually in oil, for the purpose of increasing the hardness', 'choices': ['Annealing', 'Hardening', 'Normalizing', 'Tempering'], 'answer': 'Hardening'}, {'question': 'Reheating to a temperature below the transformation range, followed by any desired rate of cooling to attain the desired properties of the metal', 'choices': ['Annealing', 'Hardening', 'Tempering', 'Stress Relieving'], 'answer': 'Tempering'}, {'question': 'Heating to a subcritical temperature, about 1100°F to 1300°F and holding at that temperature for a suitable time for the purpose of reducing internal residual stresses', 'choices': ['Annealing', 'Hardening', 'Tempering', 'Stress Relieving'], 'answer': 'Stress Relieving'}, {'question': 'Heating to some 100°F above the transformation range with subsequent cooling to below that range in still air at room temperature to produce uniform structure of the metal', 'choices': ['Annealing', 'Hardening', 'Normalizing', 'Tempering'], 'answer': 'Normalizing'}, {'question': 'A machine tool used to cut metal parts of light, medium, and large sections using a reciprocating hacksaw blade', 'choices': ['Tool grinder', 'Shaper', 'Planer', 'Power saw'], 'answer': 'Power saw'}, {'question': 'A machine tool used to machine flat or plane surfaces with a single point cutting tool', 'choices': ['Tool grinder', 'Shaper', 'Planer', 'Power saw'], 'answer': 'Shaper'}, {'question': 'A machine tool used for production of flat surfaces on pieces too large or too heavy to hold in a shaper', 'choices': ['Tool grinder', 'Shaper', 'Planer', 'Power saw'], 'answer': 'Planer'}, {'question': 'A machine tool used to finish internal or external surfaces, such as holes or keyways by use of a cutter called a broach, which has a series of cutting edges or teeth', 'choices': ['Drilling machine', 'Boring machine', 'Milling machine', 'Broaching machine'], 'answer': 'Broaching machine'}, {'question': 'An alloy of copper and tin', 'choices': ['Brass', 'Bronze', 'Iron', 'Tin'], 'answer': 'Bronze'}, {'question': 'An alloy of copper and zinc', 'choices': ['Brass', 'Bronze', 'Iron', 'Tin'], 'answer': 'Brass'}, {'question': 'A machine tool used for producing holes in metal by the use of a cutting tool called drill', 'choices': ['Drilling machine', 'Boring machine', 'Broaching machine', 'Milling machine'], 'answer': 'Drilling machine'}, {'question': 'A machine tool used to form metal parts by removing metal from a workpiece by the use of a revolving cutter with many teeth each tooth having a cutting edge which removes its share of the stock', 'choices': ['Drilling machine', 'Boring machine', 'Broaching machine', 'Milling machine'], 'answer': 'Milling machine'}, {'question': 'A machine tool used to sharpen or shape tools by using an abrasive wheel', 'choices': ['Tool grinder', 'Shaper', 'Planer', 'Power saw'], 'answer': 'Tool grinder'}, {'question': 'A machine tool used to enlarge a hole by means of an adjustable cutting tool with a single cutting edge', 'choices': ['Boring machine', 'Drilling machine', 'Broaching machine', 'Milling machine'], 'answer': 'Boring machine'}, {'question': 'The process of forming metal parts by the use of dies after the metal is heated to its plastic range', 'choices': ['Rolling', 'Forging', 'Drawing', 'Casting'], 'answer': 'Forging'}, {'question': 'The process of forming metal parts by the use of a powerful pressure from a hammer or press to obtain the desired shape, after the metal has been heated to its plastic range', 'choices': ['Rolling', 'Forging', 'Drawing', 'Casting'], 'answer': 'Forging'}, {'question': 'A manganese steel containing approximately 0.20% carbon', 'choices': ['SAE 1320', 'SAE 1321', 'SAE 2230', 'SAE 4230'], 'answer': 'SAE 1320'}, {'question': 'A machine tool in which metal is removed by means of a revolving cutter with many teeth, each tooth having a cutting edge which removes its share of the stock.', 'choices': ['Milling machine', 'Broaching machine', 'Slotting machine', 'Boring machine'], 'answer': 'Milling machine'}, {'question': 'A lathe machine tool in which the work, while revolving on a horizontal axis, is acted upon by cutting tools which are made to move slowly in directions more or less parallel to the axis of the work.', 'choices': ['Milling machine', 'Broaching machine', 'Slotting machine', 'Boring machine'], 'answer': 'Slotting machine'}, {'question': 'A machine tool used in the production of flat surfaces on pieces too large or too heavy, or perhaps too awkward to hold in a shaper.', 'choices': ['Planer', 'Shaper', 'Slotter', 'Broacher'], 'answer': 'Planer'}, {'question': 'A process of shaping a piece by bringing it into contact with a rotating abrasive wheel.', 'choices': ['Drilling', 'Broiling', 'Sawing', 'Grinding'], 'answer': 'Grinding'}, {'question': 'A tool used in measuring diameters.', 'choices': ['Micrometer', 'Vernier scale', 'Steel rule', 'Divider/Caliper'], 'answer': 'Micrometer'}, {'question': 'A tool used to inspect machine tools, fixtures, and works, to test and check the alignment of finished work, and to compare measurements in lathe work with other measurements.', 'choices': ['Dial indicator', 'Caliper', 'Micrometer', 'Straight edge'], 'answer': 'Dial indicator'}, {'question': 'The ability of metal to be deformed considerably without rupture.', 'choices': ['Ductility', 'Elasticity', 'Hardness', 'Plasticity'], 'answer': 'Ductility'}, {'question': 'The centerline used to indicate the marking or locating of centers for drilling, turning, or grinding metal surfaces, either with or without the guidance of the worker.', 'choices': ['Center line', 'Guiding line', 'Base line', 'Datum line'], 'answer': 'Center line'}, {'question': 'The operation of making a cone-shaped enlargement of the end of a hole, for a recess for a flathead screw.', 'choices': ['Countersinking', 'Reaming', 'Boring', 'Tapping'], 'answer': 'Countersinking'}, {'question': 'The operation of enlarging a hole by means of an adjustable cutting tool having several cutting edges.', 'choices': ['Boring', 'Reaming', 'Tapping', 'Drilling'], 'answer': 'Boring'}, {'question': 'An imaginary circle passing through the points at which the teeth of the mating gears contact each other.', 'choices': ['Pitch circle', 'Addendum circle', 'Dedendum circle', 'Root circle'], 'answer': 'Pitch circle'}, {'question': 'A type of fastener used for joining wooden parts together or wooden parts to metal, having a sharp point and coarse thread and a head designed to keep the bolt from turning in the wood when the nut is tightened.', 'choices': ['Wood screw', 'Expansion bolt', 'Set screw', 'Toggle bolt'], 'answer': 'Wood screw'}, {'question': 'The portion of the gear tooth that projects above or outside the pitch circle.', 'choices': ['Addendum', 'Dedendum', 'Root', 'Top land'], 'answer': 'Addendum'}, {'question': 'The portion of the gear tooth that lies below the pitch circle and is located to the root to provide the clearance.', 'choices': ['Dedendum', 'Addendum', 'Top land', 'Tooth span'], 'answer': 'Dedendum'}, {'question': 'When meshing with a gear, it is used to change rotary motion to linear motion.', 'choices': ['Gear motor', 'Gear head', 'Pinion', 'Rack gear'], 'answer': 'Rack gear'}, { question: "The process of forming metal parts by the use of dies after the metal is heated to its plastic range", choices: ["Rolling", "Forging", "Drawing", "Casting"], answer: "Rolling" },
+            { question: "The process of forming metal parts by the use of a powerful pressure from a hammer or press to obtain the desired shape, after the metal has been heated to its plastic range", choices: ["Rolling", "Forging", "Drawing", "Casting"], answer: "Forging" },
+            { question: "A manganese steel containing approximately 0.20% carbon", choices: ["SAE 1320", "SAE 1321", "SAE 2230", "SAE 4230"], answer: "SAE 1320" },
+            { question: "A tool used to measure the inside diameter", choices: ["Vernier Caliper", "Micrometer", "Inside micrometer", "Measuring tape"], answer: "Inside micrometer" },
+            { question: "A device used to measure the distance between two opposite sides of an object", choices: ["Vernier Caliper", "Micrometer", "Inside micrometer", "Measuring tape"], answer: "Vernier Caliper" },
+            { question: "The centerline used to indicate the marking or locating of centers for drilling, turning, or grinding metal surfaces, either with or without the guidance of the worker.", choices: ["Center line", "Guiding line", "Base line", "Datum line"], answer: "Center line" },
+            { question: "A machine tool used for production of internal threads by means of a rotating die", choices: ["Tapping machine", "Drilling machine", "Milling machine", "Boring machine"], answer: "Tapping machine" },
+            { question: "A machine tool used to form a surface on a metal workpiece by moving a cutting tool in a linear motion across the surface", choices: ["Shaper", "Milling machine", "Lathe", "Slotter"], answer: "Shaper" },
+            { question: "A machine tool used to produce accurate holes in metal parts", choices: ["Drilling machine", "Milling machine", "Planer", "Boring machine"], answer: "Drilling machine" },
+            { question: "An operation of cutting, grinding, or removing material by rotating a cutting tool", choices: ["Milling", "Turning", "Boring", "Grinding"], answer: "Milling" },
+            { question: "A tool used for shaping or grinding materials to precise measurements", choices: ["Grinding wheel", "Cutting tool", "File", "Vise"], answer: "Grinding wheel" },
+            { question: "A device for holding a workpiece during machining", choices: ["Vise", "Fixture", "Jig", "Chucking device"], answer: "Vise" },
+            { question: "A metal-cutting machine that utilizes a reciprocating action of a cutting tool to shape a workpiece", choices: ["Shaper", "Slotter", "Milling machine", "Boring machine"], answer: "Shaper" },
+            { question: "A device used to hold and guide a workpiece while it is being machined", choices: ["Fixture", "Clamp", "Jig", "Vise"], answer: "Jig" },
+            { question: "The operation of enlarging a hole by means of an adjustable cutting tool with a series of cutting edges", choices: ["Reaming", "Boring", "Drilling", "Tapping"], answer: "Reaming" },
+            { question: "A machine tool used for finishing internal or external threads in metal workpieces", choices: ["Tapping machine", "Lathe", "Drilling machine", "Milling machine"], answer: "Tapping machine" },
+            { question: "The portion of the gear tooth that projects above or outside the pitch circle", choices: ["Addendum", "Dedendum", "Tooth", "Pitch circle"], answer: "Addendum" },
+            { question: "An alloy made up primarily of iron with small percentages of carbon and other elements", choices: ["Steel", "Bronze", "Copper", "Aluminum"], answer: "Steel" },
+	    { question: "A metal turning machine tool in which the work, while revolving on a horizontal axis, is acted upon by a cutting tool which is made to move slowly (feed) in a direction more or less parallel to the axis of the work (longitudinal feed)", choices: ["milling machine", "broaching machine", "lathe machine", "boring machine"], answer: "lathe machine" },
+            { question: "An imaginary circle passing through the points at which the teeth of the meshing gears contact each other", choices: ["pitch circle", "addendum circle", "dedendum circle", "base circle"], answer: "pitch circle" },
+            { question: "The number of teeth per inch of pitch diameter and which gives some indications of the size of the gear teeth", choices: ["module", "pitch circle", "diametral pitch", "circular pitch"], answer: "diametral pitch" },
+            { question: "The distance from the center of one tooth of a gear to the center of the next consecutive tooth measured on the pitch", choices: ["circular pitch", "module", "diametral pitch", "pitch circle"], answer: "circular pitch" },
+            { question: "A type of bolt intended for use in bolting wooden parts together or wood to metal. It has a short portion of shank just underneath a round head, which is designed to keep the bolt from turning in the wood when the nut is tightened", choices: ["u-bolt", "carriage bolt", "eye bolt", "stud bolt"], answer: "carriage bolt" },
+            { question: "The ability of metal to be deformed considerably without rupture", choices: ["ductility", "plasticity", "malleability", "elasticity"], answer: "plasticity" },
+            { question: "A kind of gears used for heavy duty works where a large ratio of speed is required and are extensively used in speed reducers", choices: ["bevel gears", "worm gears", "helical gears", "spur gears"], answer: "worm gears" },
+            { question: "A kind of gears used to transmit motion from one shaft to another shaft at an angle to the first", choices: ["bevel gears", "worm gears", "helical gears", "spur gears"], answer: "bevel gears" },
+            { question: "The uniform heating of steel above the usual hardening temperatures, followed by cooling freely in air", choices: ["annealing", "normalizing", "hardening", "tempering"], answer: "normalizing" },
+            { question: "The operation of cooling a heated piece of work rapidly by dipping it in water, brine or oil", choices: ["quenching", "tempering", "normalizing", "annealing"], answer: "quenching" },
+            { question: "A method used in softening a piece of metal that is too hard to machine and is done by heating steel slowly above the usual hardening temperature, keeping it at the heat for 1/2 to 2 hours, then cooling slowly, preferably in a furnace", choices: ["broaching", "quenching", "normalizing", "annealing"], answer: "annealing" },
+            { question: "The total permissible variation in the size of a dimension; the difference between the limits of size", choices: ["allowance", "tolerance", "variance", "interface"], answer: "tolerance" },
+            { question: "The operation of machining the end of a workpiece to make the end square with the axis", choices: ["squaring", "buffing", "lapping", "facing"], answer: "facing" },
+            { question: "The clearance between the tooth profiles of a gear tooth", choices: ["toothspace", "backlash", "flank", "width"], answer: "backlash" },
+            { question: "A mechanism which usually do the indexing in a machine tool", choices: ["slotter", "chuck", "indexing head", "indexer"], answer: "indexing head" },
+            { question: "A material that can wear away a substance softer than itself", choices: ["phenol", "abrasive", "tungsten", "chromium"], answer: "abrasive" },
+            { question: "A cylindrical bar of steel with threads formed around it and grooves or flutes running lengthwise in it, intersecting with the threads to form cutting edges; it is used to cut internal threads", choices: ["groove", "lap", "tap", "lathe"], answer: "tap" },
+            { question: "A set of gages consisting of thin strips of metal of various thickness mounted in a steel case or holder and is widely used for measuring and checking clearances", choices: ["feeler gage", "depth gage", "ring-thread gage", "lay-out gage"], answer: "feeler gage" },
+            { question: "A machine tool which is very similar to a shaper except that the ram reciprocates vertically rather than horizontally", choices: ["lathe", "grinder", "shaper", "slotter"], answer: "slotter" },
+            { question: "A machine tool used principally to machine flat or plane surfaces with single-point cutting tool", choices: ["grinder", "shaper", "planer", "turret lathe"], answer: "shaper" },
+            { question: "A kind of bolts which has no head an instead has threads on both ends", choices: ["stud bolts", "accurately threaded bolts", "square threaded bolts", "hex bolts"], answer: "stud bolts" },
+            { question: "A kind of chuck which has reversible jaws which could be adjusted separately", choices: ["collet chuck", "independent chuck", "four jaw chuck", "two jaw chuck"], answer: "independent chuck" },
+            { question: "A tool which when pressed into a finished hole in a piece of work, provides centers on which the piece may be turned or otherwise machined", choices: ["mash", "butt", "mandrel", "wobble"], answer: "mandrel" },
+            { question: "A kind of chuck which should not be used where extreme accuracy is required", choices: ["collet chuck", "magnetic chuck", "four jaw chuck", "universal chuck"], answer: "universal chuck" },
+            { question: "The process of checking or producing checkers on the surface of a piece by rolling checkered depressions into the surface", choices: ["knurling", "hemming", "breading", "knurling"], answer: "knurling" },
+            { question: "If fits into the main spindle of a lathe and is so called because it acts as a bearing surface on which the work acts. If revolves with the work. When compared with the hardness of the dead center in the tailstock, it is usually soft, and is so made since it does no work", choices: ["ram center", "live center", "five center", "bearing center"], answer: "bearing center" },
+            { question: "A gripping device with two or more adjustable jaws set radially", choices: ["chuck", "carriage", "tailstock", "fan"], answer: "chuck" },
+            { question: "Steel balls for ball bearings are manufactured by:", choices: ["turning", "rolling", "casting", "cold heading"], answer: "cold heading" },
+            { question: "Addendum of a cycloidal gear tooth is:", choices: ["Cycloid", "epicycloids", "straight rack", "involute"], answer: "epicycloids" },
+            { question: "In a lathe, it comprises the main spindle, the necessary mechanism for obtaining the various spindle speed and also certain gears which are used to operate the quick-change gear mechanism", choices: ["Headstock", "carriage", "tailstock", "fan"], answer: "tailstock" },
+            { question: "The process of heating a piece of steel to a temperature within or above critical range and cooling rapidly", choices: ["normalizing", "hardening", "annealing", "tempering"], answer: "hardening" },
+            { question: "Welding operation in which a non-ferrous filler metal melts at a temperature below that of the metal joined but is heated above 450°C", choices: ["gas welding", "spot welding", "brazing", "seam welding"], answer: "brazing" },
+            { question: "Uniting two pieces of metal by means of a different metal which is applied between the two in molten state", choices: ["casting", "welding", "soldering", "brazing"], answer: "soldering" },
+            { question: "Fusion process in which the metal is heated into a state of fusion permitting it to flow together into a solid joint", choices: ["electric arc welding", "gas welding", "spot welding", "projection welding"], answer: "electric arc welding" },
+            { question: "Joining steel by means of high current at low voltage. During the passage of current, pressure by the electrodes produces a forge weld", choices: ["spot welding", "resistance welding", "seam welding", "gas welding"], answer: "resistance welding" },
+{ question: "A device for accurately measuring diameters", choices: ["radiometer", "profilometer", "spectrometer", "micrometer"], answer: "radiometer" },
+{ question: "A group of thin steel strips for measuring clearances", choices: ["distortion gage", "feeler gage", "line center gage", "deflection gage"], answer: "feeler gage" },
+{ question: "A hand tool used to measure engine crank web deflections", choices: ["distortion gage", "feeler gage", "line center gage", "deflection gage"], answer: "distortion gage" },
+{ question: "A hand tool used to measure tension on bolts", choices: ["indexer", "torque wrench", "tensionaler", "tensiometer"], answer: "torque wrench" },
+{ question: "The permissible variation in the size of a dimension; the difference between the limits of size", choices: ["allowance", "variance", "tolerance", "interface"], answer: "tolerance" },
+{ question: "A gear with teeth on the outer cylindrical surface", choices: ["outer gear", "external gear", "spiral gear", "helical gear"], answer: "external gear" },
+{ question: "The diameter of a circle coinciding with the top of the teeth of an internal gear", choices: ["pitch diameter", "root diameter", "internal diameter", "central diameter"], answer: "internal diameter" },
+{ question: "A circle coinciding with a tangent to the bottom of the tooth space", choices: ["root circle", "pitch circle", "dedendum circle", "dedendum circle"], answer: "root circle" },
+{ question: "The total depth of a tooth space, equal to addendum plus dedendum", choices: ["total depth", "working depth", "whole depth", "dedendum"], answer: "whole depth" },
+{ question: "The depth of tooth space below the pitch circle", choices: ["dedendum", "working depth", "full depth", "tooth depth"], answer: "dedendum" },
+{ question: "The of gear teeth to each mm pitch diameter", choices: ["diametral pitch", "module", "circular pitch", "english module"], answer: "diametral pitch" },
+{ question: "A machine tool in which abrasive wheel is used as cutting tool to obtain a very smooth finish", choices: ["drill", "grinder", "planer", "shaper"], answer: "grinder" },
+{ question: "It is used to produce a variety of surfaced by using a circular-type cutter with multiple teeth", choices: ["grinding machine", "shaper", "boring machine", "milling machine"], answer: "milling machine" },
+{ question: "It is used principally to machine flat or plane surfaces with a single-point tool", choices: ["drill", "shaper", "planer", "tool grinder"], answer: "shaper" },
+{ question: "Cutting a hole by means of rotating tool or the work may revolve and to the tool remain fixed as in the lathe", choices: ["piercing", "notching", "boring", "perforating"], answer: "boring" },
+{ question: "One of the following is not a tap used for cutting threads in holes", choices: ["tapping tap", "plug tap", "taper tap", "bottoming tap"], answer: "bottoming tap" },
+{ question: "An index or dividing head", choices: ["a part of a drill press", "used to rotate the work", "not used to cut helixes", "always manually operated"], answer: "used to rotate the work" },
+{ question: "Galvanized iron is a term referring to iron coated with:", choices: ["tin", "zinc", "magnesium", "aluminum"], answer: "zinc" },
+{ question: "The moment of inertia of a rectangle whose base is 'b' and height 'h' about its base is:", choices: ["bh3 / 12", "bh3 / 36", "bh2 / 12", "bh2 / 4"], answer: "bh3 / 36" },
+{ question: "In usual spur gearing:", choices: ["the pitch circle and the base circle are the same", "meshing depth includes the clearance", "tooth outline are usually involute curves", "tooth outline are always cycloidal curves"], answer: "tooth outline are usually involute curves" },
+{ question: "A stainless steel is obtained principally by the use of the following alloying element", choices: ["chromium", "tungsten", "carbon", "phenol"], answer: "carbon" },
+{ question: "One of the following is not a common term relating to the classification of fits", choices: ["running", "snug", "medium force fit", "bound"], answer: "bound" },
+{ question: "Herringbone gears are gears which:", choices: ["do not operate on parallel shaft", "have a double helical between the teeth", "consist of two left-handed helical gears", "tend to produce thrust on the shafts"], answer: "have a double helical between the teeth" },
+{ question: "Internal stresses existing in a welded connection:", choices: ["are not relieved when the weld is peened", "are not relieved by heat treatment", "may be relieved when the weld is peened", "are relieved by x-ray analysis"], answer: "are not relieved by heat treatment" },
+{ question: "In general the design stress and factor of safety are related as follows:", choices: ["design stress = ultimate stress times factor of safety", "design stress = ultimate stress divided by factor of safety", "Design stress = design stress divided by ultimate stress", "Design stress = factor of safety divided by design stress"], answer: "Design stress = design stress divided by ultimate stress" },
+{ question: "A group of thin steel strips for measuring clearances", choices: ["depth gage", "feeler gage", "lay-out gage", "clearance gage"], answer: "feeler gage" },
+{ question: "A hand tool used to measure tension on bolts", choices: ["indexer", "torque wrench", "tensionaler", "tensiometer"], answer: "torque wrench" },
+{ question: "A material that can wear away a substance softer than itself", choices: ["abrasive", "corrosive", "tungsten", "alloy"], answer: "corrosive" },
+{ question: "The material used in high speed processes", choices: ["high speed steel", "chromium", "cast iron", "carbon steel"], answer: "high speed steel" },
+{ question: "An alloy of copper and zinc", choices: ["chromium", "bronze", "brass", "aluminum"], answer: "bronze" },
+{ question: "An alloy of copper, tin and small amount of phosphorus", choices: ["chromium", "bronze", "brass", "aluminum"], answer: "bronze" },
+{ question: "The process of working metals by the application of sudden blows or by steady pressure", choices: ["welding", "extursion", "forging", "swaging"], answer: "forging" },
+{ question: "A welding operation in which a non-ferrous filler metal melts at a temperature below that of the metal joined but is heated above 450°C", choices: ["brazing", "spot welding", "gas welding", "projection welding"], answer: "brazing" },
+{ question: "The operation of cooling a heated piece of work rapidly by dipping it in water, brine or oil", choices: ["tempering", "annealing", "quenching", "normalizing"], answer: "quenching" },
+{ question: "A machine tool used to machine flat surfaces", choices: ["shaper", "planer", "grinder", "Lathe"], answer: "Lathe" } ];
+        let shuffledData, currentQuestion, score, timer, interval;
+        let answersReview = [];
+        let leaderboard = [];
+
+        function startQuiz() {
+            const name = document.getElementById("nickname").value.trim();
+            if (!name) {
+                alert("Please enter your nickname first.");
+                return;
+            }
+
+            window.username = name;
+            shuffledData = quizData
+            currentQuestion = 0;
+            score = 0;
+            answersReview = [];
+            renderQuizUI();
+            loadQuestion();
+        }
+
+        function renderQuizUI() {
+            document.getElementById("container").innerHTML = `
+                <div class="score-board">Score: <span id="score">0</span></div>
+                <div class="timer">Time Left: <span id="timer">60</span> sec</div>
+                <div class="progress">Question <span id="current">1</span> of <span id="total">${quizData.length}</span></div>
+                <div id="quiz-content"></div>
+            `;
+        }
+
+        function startTimer() {
+            let timeLeft = 30;
+            document.getElementById("timer").innerText = timeLeft;
+            interval = setInterval(() => {
+                timeLeft--;
+                document.getElementById("timer").innerText = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    currentQuestion++;
+                    loadQuestion();
+                }
+            }, 1000);
+        }
+
+        function loadQuestion() {
+            clearInterval(interval);
+            if (currentQuestion >= quizData.length) {
+                showResults();
+                return;
+            }
+            document.getElementById("current").innerText = currentQuestion + 1;
+            const q = shuffledData[currentQuestion];
+            const quizContent = document.getElementById("quiz-content");
+            quizContent.innerHTML = `
+                <div class="question">${currentQuestion + 1}. ${q.question}</div>
+                <div class="choices"></div>
+		<div class="center">
+            	    <button onclick="revealAnswer('${q.answer}')">Show Answer</button>
+                    <button onclick="endQuizNow()">End Quiz</button>
+        	</div>
+            `;
+            const choicesContainer = quizContent.querySelector(".choices");
+
+            q.choices.sort(() => 0.5 - Math.random()).forEach(choice => {
+                const btn = document.createElement("div");
+                btn.className = "choice";
+                btn.innerText = choice;
+                btn.onclick = () => {
+                    clearInterval(interval);
+                    let isCorrect = choice === q.answer;
+                    if (isCorrect) {
+                        btn.classList.add("correct");
+                        document.getElementById("score").innerText = ++score;
+                        document.getElementById("correct-sound").play();
+                    } else {
+                        btn.classList.add("incorrect");
+                        document.getElementById("wrong-sound").play();
+                    }
+                    Array.from(choicesContainer.children).forEach(b => {
+                        if (b.innerText === q.answer) {
+                            b.classList.add("correct");
+                        }
+                        b.onclick = null;
+                    });
+                    answersReview.push({question: q.question, selected: choice, correct: q.answer, result: isCorrect});
+                    setTimeout(() => {
+                        currentQuestion++;
+                        loadQuestion();
+                    }, 100);
+                };
+                choicesContainer.appendChild(btn);
+            });
+            startTimer();
+        }
+
+        function showResults() {
+            document.getElementById("end-sound").play();
+            const percent = Math.round((score / quizData.length) * 100);
+            if (percent >= 80) {
+                leaderboard.push({name: window.username, score: score});
+                leaderboard.sort((a,b) => b.score - a.score);
+                leaderboard = leaderboard.slice(0, 3);
+            }
+            const quizContent = document.getElementById("container");
+            let resultHTML = `
+                <h2>Quiz Completed!</h2>
+                <p>Your Score: ${score} / ${quizData.length} (${percent}%)</p>
+                <h3>${percent >= 70 ? "🎉 Congratulations, Future Mechanical Engineer!" : "Keep studying and try again!"}</h3>
+                <h3>Review:</h3>
+            `;
+            answersReview.forEach((entry, i) => {
+                resultHTML += `
+                    <div>
+                        <strong>${i + 1}. ${entry.question}</strong><br>
+                        Your answer: <span style="color:${entry.result ? 'green' : 'red'};">${entry.selected}</span><br>
+                        Correct answer: <span style="color:green;">${entry.correct}</span><br><br>
+                    </div>
+                `;
+            });
+            if (leaderboard.length) {
+                resultHTML += "<h3>🏆 Top Scorers (80%+):</h3><ol>";
+                leaderboard.forEach(user => {
+                    resultHTML += `<li>${user.name} – Score: ${user.score}</li>`;
+                });
+                resultHTML += "</ol>";
+            }
+            resultHTML += '<div class="center"><button onclick="location.reload()">Retake Quiz</button></div>';
+            quizContent.innerHTML = resultHTML;
+        }
+	function revealAnswer(answer) {
+   	    const choices = document.querySelectorAll('.choice');
+    	    choices.forEach(choice => {
+        	if (choice.innerText === answer) {
+            	    choice.classList.add("correct");
+        	}
+    	    });
+        }
+
+	// ✅ NEW: End quiz immediately
+	function endQuizNow() {
+   	    clearInterval(interval);
+   	    for (let i = currentQuestion; i < quizData.length; i++) {
+        	answersReview.push({
+            	    question: quizData[i].question,
+            	    selected: "No answer",
+           	    correct: quizData[i].answer,
+            	    result: false
+        	});
+    	    }
+	    currentQuestion = quizData.length;
+            showResults();
+	}
+        </script>
+
+<audio id="correct-sound" src="correct.mp3.mp3" preload="auto"></audio>
+<audio id="wrong-sound" src="wrong.mp3.mp3" preload="auto"></audio>
+<audio id="end-sound" src="end.mp3.mp3" preload="auto"></audio>
+<audio id="intro-sound" src="intro.mp3" preload="auto"></audio>
+
+
+</body>
+</html>
